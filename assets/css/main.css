@@ -1,4 +1,20 @@
 header {
-  background-color: : red;
+  background-color: #b2ebf2;
+  padding: 10px;
   text-align: center;
+  vertical-align: middle;
+}
+html, body {
+  margin:0;
+  height: 100%;
+}
+.bg{
+  /* Input the image */
+  background-image: url("../bgimage.JPG");
+  /* Set the height */
+  height: 100%;
+  /* Set the position, scale of the image properly */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
