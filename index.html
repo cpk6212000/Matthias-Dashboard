@@ -8,24 +8,38 @@
     google.charts.load('current',{'packages':["corechart"],'languages':'ch'});
     google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart(){
-      var data = google.visualization.arrayToDataTable([
-        ['人名','完成進度',{ role: 'style'}],
-        ['子欣', 1 , 'color: #f06292' ],
-        ['群歡', 1 , 'color: #9c27b0'],
-        ['蓁宜', 1 , 'color: #C4FBDC'],
-        ['慧珊', 1 , 'color: #f44336'],
-        ['樂弘', 1 , 'color: #8bc34a'],
-        ['子宥', 1 , 'color: #3f51b5'],
-        ['悅星', 0 , 'color: #795548'],
-        ['柏錡', 1 , 'color: #00bcd4'],
-      ]);
+    function drawVisualization() {
+      // Create and populate the data table.
+      var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Year');
+                data.addColumn('number', 'Sales');
+                data.addColumn('number', 'SalesMax');
 
-      var options = {'title':'挑戰進度', 'width':700, 'height':700, 'backgroundColor':{fill: 'rgba(200,200,200,0.5)'}};
+                data.addRows(4);
+                data.setValue(0, 0, '2004');
+                data.setValue(0, 1, 1000);
+                data.setValue(0, 2, 0);
 
-      var chart = new google.visualization.BarChart(document.getElementById("chart_div"));
-      chart.draw(data, options);
-    }
+                data.setValue(1, 0, '2005');
+                data.setValue(1, 1, 1170);
+                data.setValue(1, 2, 0);
+
+      /* NEED TO MAKE THIS BAR RED? */
+                data.setValue(2, 0, '2006');
+                data.setValue(2, 1, 0);
+                data.setValue(2, 2, 1400);
+
+                data.setValue(3, 0, '2007');
+                data.setValue(3, 1, 1030);
+                data.setValue(3, 2, 0);
+
+
+                var chart = new google.visualization.BarChart(document.getElementById('visualization'));
+      chart.draw(data, {isStacked: true, width: 400, height: 240, title: 'Company Performance',
+                                  vAxis: {title: 'Year', titleTextStyle: {color: 'red'}},
+                                  series: [{color: 'blue', visibleInLegend: true}, {color: 'red', visibleInLegend: false}]
+                                 });
+      }
   </script>
 </head>
 <body>
